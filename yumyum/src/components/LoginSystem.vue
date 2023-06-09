@@ -5,7 +5,6 @@ import logo from "./Logo.vue";
 import { data } from "../store";
 import { auth, firestore } from "../firebase";
 import {
-  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -35,6 +34,25 @@ const LoginGoogle = async () => {
   db.user = user;
   router.push("/");
 };
+
+//
+
+
+const loginEmail = async () => {
+  try {
+    const { user } = await signInWithEmailAndPassword(
+      auth,
+      email.value,
+      passwordFirst.value
+    );
+    router.push("/");
+    db.user = user;
+  } catch (error) {
+    console.log(error);
+  }
+}
+//
+
 
 
 </script>
