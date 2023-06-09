@@ -10,7 +10,7 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getDoc, doc } from "@firebase/firestore";
+import { getDoc, doc, setDoc } from "@firebase/firestore";
 
 const email = ref("");
 const passwordFirst = ref("");
@@ -30,6 +30,7 @@ const registerEmail = async () => {
     passwordFirst.value
   );
   db.user = user;
+  await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
   router.push("/");
 };
 
