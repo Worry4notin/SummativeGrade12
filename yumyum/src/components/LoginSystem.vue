@@ -10,34 +10,29 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getDoc, doc } from "@firebase/firestore";
+import { getDoc, doc, setDoc } from "@firebase/firestore";
 
 const email = ref("");
 const passwordFirst = ref("");
 
 const db = data();
 
-const loginEmail = async () => {
-  try {
-    const { user } = await signInWithEmailAndPassword(
-      auth,
-      email.value,
-      passwordFirst.value
-    );
-    db.user = user;
-    router.push("/");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const LoginGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
-  db.user = user;
+  console.log(user.email)
+  let cart = (await getDoc(doc(firestore, "cart", user.email)));
 
-  //const { cart } = (await getDoc(doc(firestore, "cart", user.email))).data();
-  //db.cart = cart;
+  if(!cart.exists())
+  {
+    console.log(db.inv)
+    await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
+    db.cart = cart.data();
+  }
+  else{
+    db.cart = cart.data();
+  }
+  db.user = user;
   router.push("/");
 };
 
