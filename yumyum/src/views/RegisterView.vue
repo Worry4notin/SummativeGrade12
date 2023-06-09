@@ -1,9 +1,10 @@
 <script setup>
+  import Register from "../components/RegisterSystem.vue";
 </script>
 
 <template>
   <div>
-    <h1>sup</h1>
+    <Register />
   </div>
 </template>
 

@@ -35,8 +35,9 @@ const LoginGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
   db.user = user;
-  const { cart } = (await getDoc(doc(firestore, "cart", user.email))).data();
-  db.cart = cart;
+
+  //const { cart } = (await getDoc(doc(firestore, "cart", user.email))).data();
+  //db.cart = cart;
   router.push("/");
 };
 
@@ -56,5 +57,6 @@ const LoginGoogle = async () => {
       <h1>Register via Google</h1>
       <button @click="LoginGoogle()">Google</button>
     </div>
+      <button @click="$router.push('/Register')">Register</button>
     <button></button>
 </template>
