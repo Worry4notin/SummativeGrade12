@@ -1,5 +1,5 @@
 <script setup>
-    import { dataTemp } from "../store/index";
+    import { dataTemp, data } from "../store/index";
 </script>
 
 <template>
@@ -14,7 +14,7 @@
           <p>{{ dataTemp().viewTemp.release_date }}</p>
           <div class="button">
             <button @click="dataTemp().isOpen = false">Close</button>
-            <button @click="">Purchase</button>
+            <button @click="data().addCart(dataTemp().viewTemp)">Purchase</button>
           </div>
         </div>
       </div>
