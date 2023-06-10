@@ -4,14 +4,14 @@
 
 <template>
   <teleport to="body">
-    <div class="modal" v-if="dataTemp().isOpen">
+    <div class="modal">
       <div class="content">
-        <img :src="`https://image.tmdb.org/t/p/w500/${data.poster_path}`" />
+        <img :src="`https://image.tmdb.org/t/p/w500/${dataTemp().viewTemp.poster_path}`" />
         <div>
           <h1>Title</h1>
-          <p>{{ dataTemp().viewTemp.data.title }}</p>
+          <p>{{ dataTemp().viewTemp.title }}</p>
           <h1>Release Date</h1>
-          <p>{{ dataTemp().viewTemp.data.release_date }}</p>
+          <p>{{ dataTemp().viewTemp.release_date }}</p>
           <div class="button">
             <button @click="dataTemp().isOpen = false">Close</button>
             <button @click="">Purchase</button>

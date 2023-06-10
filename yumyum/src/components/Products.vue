@@ -3,7 +3,7 @@ import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { dataTemp } from "../store/index";
-//import Modal from "../components/Modal.vue";
+import Modal from "../components/Modal.vue";
 
 const genre = ref(28);
 const search = ref("");
@@ -13,11 +13,6 @@ const currentURL = ref("");
 const totalPages = ref(0);
 const showModal = ref(false);
 const selectedRecordId = ref(0);
-/*
-const toggleModal = (id) => {
-  showModal.value = !showModal.value;
-  selectedRecordId.value = id;
-};*/
 
 const getTMDBData = async (url, options, page) => {
   movies.value = (
@@ -39,7 +34,7 @@ const getTMDBData = async (url, options, page) => {
 const viewProduct = (data) => {
     dataTemp().viewTemp = data;
     dataTemp().isOpen = true;
-  console.log(data);
+  console.log(dataTemp().viewTemp);
 }
 </script>
 
@@ -86,6 +81,7 @@ const viewProduct = (data) => {
       </div>
     </div>
   </div>
+  <Modal v-if="dataTemp().isOpen" />
 </template>
 
 <style scoped>
