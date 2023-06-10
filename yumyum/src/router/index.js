@@ -3,9 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/HomeView.vue";
 import Login from "../views/LoginView.vue";
 import Register from "../views/RegisterView.vue";
-/*
-import Login from "../views/LoginView.vue";
-import Store from "../views/StoreView.vue";
+import Store from "../views/StoreView.vue";/*
 import Cart from "../views/CartView.vue";
 */
 const routes = [
@@ -22,11 +20,10 @@ const routes = [
     component: Register,
   },
 
-  /*
   {
     path: "/Store",
     component: Store,
-  },
+  },/*
   {
     path: "/Cart",
     component: Cart,

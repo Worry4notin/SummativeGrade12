@@ -4,13 +4,8 @@ import router from "../router/index";
 import logo from "./Logo.vue";
 import { data } from "../store";
 import { auth, firestore } from "../firebase";
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { getDoc, doc, setDoc } from "@firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "@firebase/firestore";
 
 const email = ref("");
 const passwordFirst = ref("");
@@ -31,7 +26,7 @@ const registerEmail = async () => {
   );
   db.user = user;
   await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
-  router.push("/");
+  router.push("/Login");
 };
 
 </script>

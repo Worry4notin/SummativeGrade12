@@ -32,11 +32,8 @@ const LoginGoogle = async () => {
     db.cart = cart.data();
   }
   db.user = user;
-  router.push("/");
+  router.push("/Store");
 };
-
-//
-
 
 const loginEmail = async () => {
   try {
@@ -45,15 +42,12 @@ const loginEmail = async () => {
       email.value,
       passwordFirst.value
     );
-    router.push("/");
+    router.push("/Store");
     db.user = user;
   } catch (error) {
     console.log(error);
   }
 }
-//
-
-
 
 </script>
 
