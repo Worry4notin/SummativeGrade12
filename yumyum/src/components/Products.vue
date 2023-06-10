@@ -2,6 +2,7 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { dataTemp } from "../store/index";
 //import Modal from "../components/Modal.vue";
 
 const genre = ref(28);
@@ -34,6 +35,12 @@ const getTMDBData = async (url, options, page) => {
   totalPages.value = movies.value.total_pages;
   currentURL.value = url;
 };
+
+const viewProduct = (data) => {
+    dataTemp().viewTemp = data;
+    dataTemp().isOpen = true;
+  console.log(data);
+}
 </script>
 
  <template>
@@ -74,8 +81,8 @@ const getTMDBData = async (url, options, page) => {
       <button @click="getTMDBData(currentURL,{query: search,},page >= totalPages ? totalPages : page++)">Next</button>
     </div>
     <div v-if="movies" class="tiles">
-      <div v-for="movie in movies.results" :key="movie.id" class="tile">
-        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" @click="toggleModal(movie.id)"/>
+      <div v-for="movie in movies.results">
+        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" @click="viewProduct(movie)"/>
       </div>
     </div>
   </div>

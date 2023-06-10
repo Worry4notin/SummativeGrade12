@@ -18,3 +18,11 @@ export const data = defineStore('store', {
     }
   }
 })
+
+export const dataTemp = defineStore("data", () => {
+  const list = "";
+  const viewTemp = "";
+  const isOpen = false;
+
+  return { list, viewTemp, isOpen };
+});
