@@ -10,11 +10,19 @@ export const data = defineStore('store', {
     async addCart(data) {
       this.inv[data.title] = data;
       console.log(this.inv)
-
       await setDoc(doc(firestore, "cart", this.user.email), this.inv);
+    },
+
+    async removeCart(data) {
+      console.log(this.inv[data.title]);
+      if (this.inv[data.title]) {
+        delete this.inv[data.title];
+        await setDoc(doc(firestore, "cart", this.user.email), this.inv);
     }
   }
-})
+}
+});
+
 export const dataTemp = defineStore("data", () => {
   const list = "";
   const viewTemp = "";

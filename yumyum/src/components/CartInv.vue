@@ -3,14 +3,8 @@ import { data } from "../store/index";
 import { ref } from "vue";
 
 const isOpen = ref(false);
-
-const poster = async (posData) => {
-    return 
-}
-/*
-function remove(data) {
-  storedData().cartContent.splice(storedData().cartContent.indexOf(data), 1);
-}
+const db = data();
+const tempData = ref("");
 
 function order(data) {
   isOpen.value = true;
@@ -19,8 +13,8 @@ function order(data) {
 
 function closeOrder(data) {
   isOpen.value = false;
-  remove(data);
-}*/
+  db.removeCart(data);
+}
 </script>
 
 <template>
@@ -33,8 +27,8 @@ function closeOrder(data) {
         <div>
           <img :src="`https://image.tmdb.org/t/p/w500/${data.poster_path}`" class="poster" />
           <div class="button">
-            <button @click="">Cancel</button>
-            <button @click="">Order</button>
+            <button @click="db.removeCart(data)">Cancel</button>
+            <button @click="order(data)">Order</button>
           </div>
         </div>
       </div>
