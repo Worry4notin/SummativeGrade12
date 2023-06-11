@@ -26,10 +26,10 @@ const LoginGoogle = async () => {
   {
     console.log(db.inv)
     await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
-    data().cart = cart.data();
+    db.cart = cart.data();
   }
   else{
-    data().cart = cart.data();
+    db.cart = cart.data();
   }
   data().user = user;
   console.log(data().user)

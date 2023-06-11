@@ -1,16 +1,21 @@
 import { defineStore } from 'pinia'
 import { firestore, auth } from '../firebase';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, getDoc ,doc } from 'firebase/firestore';
 
 export const data = defineStore('store', () => {
-    let user =  null;
     let inv = [];
   
     const addCart = async (data) => {
+      //inv = await getDoc(doc(firestore, "cart", auth.currentUser.email))
+      console.log(inv)
       inv.push(data);
       var noDup = inv;
+      console.log(noDup)
       noDup =  [...new Set(inv)];
       console.log(noDup);
+      console.log(auth.currentUser)
+      console.log(inv)
+      //await setDoc(doc(firestore, "cart", auth.currentUser.email), { inv: noDup });
     }
   /*actions: {
     async addCart(data) {
@@ -24,8 +29,11 @@ export const data = defineStore('store', () => {
       //await setDoc(doc(firestore, "cart", this.user.email), { inv: this.inv });
     }
   }*/
-  return { user, inv, addCart};
+  return { inv, addCart};
 });
+
+
+
 
 export const dataTemp = defineStore("data", () => {
   const list = "";
