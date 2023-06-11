@@ -19,7 +19,6 @@ const db = data();
 const LoginGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
-  console.log(user.email)
   let cart = (await getDoc(doc(firestore, "cart", user.email)));
 
   if(!cart.exists())
@@ -32,8 +31,6 @@ const LoginGoogle = async () => {
     db.cart = cart.data();
   }
   data().user = user;
-  console.log(data().user)
-  console.log(data().cart)
   router.push("/Store");
 };
 

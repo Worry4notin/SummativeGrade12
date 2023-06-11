@@ -22,6 +22,7 @@
   </teleport>
 </template>
 
+
 <style scoped>
 img {
   width: 100%;

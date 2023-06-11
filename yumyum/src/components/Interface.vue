@@ -3,7 +3,7 @@
 <template>
   <div>
     <h1>Store</h1>
-    <img src="../../img/Cart.png" @click="$router.push('/')" />
+    <img src="../../img/Cart.png" @click="$router.push('/Cart')" />
   </div>
 </template>
 
