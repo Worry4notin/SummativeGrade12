@@ -64,5 +64,4 @@ const loginEmail = async () => {
       <button @click="LoginGoogle()">Google</button>
     </div>
       <button @click="$router.push('/Register')">Register</button>
-    <button></button>
 </template>
