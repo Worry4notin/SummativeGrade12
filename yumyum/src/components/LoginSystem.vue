@@ -26,12 +26,14 @@ const LoginGoogle = async () => {
   {
     console.log(db.inv)
     await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
-    db.cart = cart.data();
+    data().cart = cart.data();
   }
   else{
-    db.cart = cart.data();
+    data().cart = cart.data();
   }
-  db.user = user;
+  data().user = user;
+  console.log(data().user)
+  console.log(data().cart)
   router.push("/Store");
 };
 
