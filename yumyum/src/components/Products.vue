@@ -11,8 +11,6 @@ const movies = ref(null);
 const page = ref(1);
 const currentURL = ref("");
 const totalPages = ref(0);
-const showModal = ref(false);
-const selectedRecordId = ref(0);
 
 const getTMDBData = async (url, options, page) => {
   movies.value = (

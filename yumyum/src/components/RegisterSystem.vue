@@ -25,7 +25,7 @@ const registerEmail = async () => {
     passwordFirst.value
   );
   db.user = user;
-  await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
+  await setDoc(doc(firestore, "cart", user.email), db.inv );
   router.push("/Login");
 };
 
