@@ -28,6 +28,7 @@ const LoginGoogle = async () => {
   }
   else{
     db.inv = cart.data();
+    console.log(data().inv)
   }
   data().user = user;
   router.push("/Store");

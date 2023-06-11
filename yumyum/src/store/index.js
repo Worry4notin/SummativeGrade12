@@ -9,9 +9,9 @@ export const data = defineStore('store', {
   actions: {
     async addCart(data) {
       this.inv[data.title] = data;
-      console.log(data)
+      console.log(this.inv)
 
-      await setDoc(doc(firestore, "cart", this.user.email), this.inv );
+      await setDoc(doc(firestore, "cart", this.user.email), this.inv);
     }
   }
 })

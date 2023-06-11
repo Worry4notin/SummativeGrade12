@@ -23,11 +23,11 @@ const routes = [
   {
     path: "/Store",
     component: Store,
-  },/*
+  },
   {
     path: "/Cart",
     component: Cart,
-  },*/
+  },
 ];
 
 const router = createRouter({
