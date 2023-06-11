@@ -34,7 +34,6 @@ const getTMDBData = async (url, options, page) => {
 const viewProduct = (data) => {
     dataTemp().viewTemp = data;
     dataTemp().isOpen = true;
-  console.log(dataTemp().viewTemp);
 }
 </script>
 

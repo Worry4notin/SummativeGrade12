@@ -8,11 +8,10 @@ export const data = defineStore('store', {
   }),
   actions: {
     async addCart(data) {
-      this.inv.push({
-        data,
-      });
+      this.inv[data.title] = data;
+      console.log(data)
 
-      await setDoc(doc(firestore, "cart", this.user.email), { inv: this.inv });
+      await setDoc(doc(firestore, "cart", this.user.email), this.inv );
     }
   }
 })
