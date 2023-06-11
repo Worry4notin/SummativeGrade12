@@ -4,7 +4,7 @@ import { setDoc, doc } from 'firebase/firestore';
 export const data = defineStore('store', {
   state: () => ({
     user: null,
-    inv: [],
+    inv: {},
   }),
   actions: {
     async addCart(data) {

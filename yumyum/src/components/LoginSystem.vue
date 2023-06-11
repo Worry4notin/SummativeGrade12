@@ -24,7 +24,7 @@ const LoginGoogle = async () => {
   if(!cart.exists())
   {
     console.log(db.inv)
-    await setDoc(doc(firestore, "cart", user.email), { inv: db.inv });
+    await setDoc(doc(firestore, "cart", user.email), db.inv );
   }
   else{
     db.inv = cart.data();
