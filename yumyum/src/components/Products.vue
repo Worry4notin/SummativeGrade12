@@ -8,11 +8,11 @@ import Modal from "../components/Modal.vue";
 const genre = ref(28);
 const search = ref("");
 const movies = ref(null);
-const page = ref(1);
+const currentPage = ref(1);
 const currentURL = ref("");
-const totalPages = ref(0);
+const pageTotal = ref(0);
 
-const getTMDBData = async (url, options, page) => {
+const getTMDBData = async (url, options) => {
   movies.value = (
     await axios.get(url, {
       params: {
@@ -20,13 +20,14 @@ const getTMDBData = async (url, options, page) => {
         region: "US",
         language: "en",
         include_adult: false,
-        page,
+        page: currentPage.value,
         ...options,
       },
     })
   ).data;
-  totalPages.value = movies.value.total_pages;
+  pageTotal.value = movies.value.total_pages;
   currentURL.value = url;
+  console.log(movies.value.page)
 };
 
 const viewProduct = (data) => {
@@ -68,9 +69,9 @@ const viewProduct = (data) => {
       </div>
     </div>
     <div class="pagination">
-      <button @click=" getTMDBData(currentURL,{query: search,},page === 1 ? 1 : page--)">Prev</button>
-      <p>{{ `Page ${page} of ${totalPages}` }}</p>
-      <button @click="getTMDBData(currentURL,{query: search,},page >= totalPages ? totalPages : page++)">Next</button>
+      <button @click=" getTMDBData(currentURL,{with_genres: genre , query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
+      <p>{{ `Page ${currentPage} of ${pageTotal}` }}</p>
+      <button @click="getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
     </div>
     <div v-if="movies" class="tiles">
       <div v-for="movie in movies.results">

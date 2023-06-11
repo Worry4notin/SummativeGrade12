@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { firestore } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
+import axios from "axios";
+
 export const data = defineStore('store', {
   state: () => ({
     user: null,
