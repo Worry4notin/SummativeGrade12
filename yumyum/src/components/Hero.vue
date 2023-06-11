@@ -15,7 +15,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #292929;
 }
 
 .text {

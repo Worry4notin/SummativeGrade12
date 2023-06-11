@@ -65,7 +65,7 @@ const viewProduct = (data) => {
       </div>
       <div class="search">
         <input type="search" placeholder="Search bar" v-model="search" />
-        <button @click=" getTMDBData('https://api.themoviedb.org/3/search/movie', { query: search, })">Search</button>
+        <button @click=" currentPage = 1 ; getTMDBData('https://api.themoviedb.org/3/search/movie', { query: search, }) ">Search</button>
       </div>
     </div>
     <div class="pagination">
@@ -73,7 +73,7 @@ const viewProduct = (data) => {
       <p>{{ `Page ${currentPage} of ${pageTotal}` }}</p>
       <button @click="getTMDBData(currentURL,{query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
     </div>
-    <div v-if="movies" class="prodcuts">
+    <div v-if="movies" class="products">
       <div v-for="movie in movies.results">
         <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" @click="viewProduct(movie)"/>
       </div>
@@ -131,7 +131,8 @@ select{
 }
 
 .interface{
-  margin-top: 7px;
+  margin-top: 12px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -145,4 +146,34 @@ select{
   display: flex;
   flex-direction: row;
 }
+.pagination{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+}
+
+.pagination button{
+  font-size: 17px;
+  font-family: cursive;
+  border-radius: 6px;
+  height: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.pagination > p{
+  font-size: 18px;
+  font-family: cursive;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(4, auto);
+  gap: 15px;
+  padding: 15px;
+}
+
 </style>
