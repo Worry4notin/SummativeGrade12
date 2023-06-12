@@ -1,7 +1,7 @@
 <script setup>
+import { auth } from "../firebase";
 import axios from "axios";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 import { dataTemp } from "../store/index";
 import Modal from "../components/Modal.vue";
 
@@ -33,6 +33,10 @@ const getTMDBData = async (url, options) => {
 const viewProduct = (data) => {
     dataTemp().viewTemp = data;
     dataTemp().isOpen = true;
+}
+
+if(!auth.currentUser){
+  router.push('/Login')
 }
 </script>
 

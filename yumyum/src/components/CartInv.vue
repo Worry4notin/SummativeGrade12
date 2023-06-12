@@ -1,4 +1,6 @@
 <script setup>
+import { auth } from "../firebase";
+import router from "../router";
 import { data } from "../store/index";
 import { ref } from "vue";
 
@@ -14,6 +16,10 @@ function order(data) {
 function closeOrder(data) {
   isOpen.value = false;
   db.removeCart(data);
+}
+
+if(!auth.currentUser){
+  router.push('/Login')
 }
 </script>
 
