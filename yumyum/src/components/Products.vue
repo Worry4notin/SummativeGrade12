@@ -2,7 +2,6 @@
 import { auth } from "../firebase";
 import axios from "axios";
 import { ref } from "vue";
-import router from "../router";
 import { dataTemp } from "../store/index";
 import Modal from "../components/Modal.vue";
 
@@ -28,7 +27,6 @@ const getTMDBData = async (url, options) => {
   ).data;
   pageTotal.value = movies.value.total_pages;
   currentURL.value = url;
-  console.log(movies.value.page)
 };
 
 const viewProduct = (data) => {
@@ -74,9 +72,9 @@ if(!auth.currentUser){
       </div>
     </div>
     <div class="pagination">
-      <button @click=" getTMDBData(currentURL,{query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
+      <button @click=" getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
       <p>{{ `Page ${currentPage} of ${pageTotal}` }}</p>
-      <button @click="getTMDBData(currentURL,{query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
+      <button @click="getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
     </div>
     <div v-if="movies" class="products">
       <div v-for="movie in movies.results">
@@ -84,7 +82,7 @@ if(!auth.currentUser){
       </div>
     </div>
     <div class="pagination" v-if="movies">
-      <button @click=" getTMDBData(currentURL,{with_genres: genre , query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
+      <button @click=" getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
       <p>{{ `Page ${currentPage} of ${pageTotal}` }}</p>
       <button @click="getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
     </div>
