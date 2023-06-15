@@ -1,4 +1,3 @@
-
 <script setup>
 import logo from "./Logo.vue";
 </script>

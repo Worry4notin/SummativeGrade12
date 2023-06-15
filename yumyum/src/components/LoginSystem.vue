@@ -20,19 +20,16 @@ const db = data();
 const LoginGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
-  let cart = (await getDoc(doc(firestore, "cart", user.email)));
+  let cart = await getDoc(doc(firestore, "cart", user.email));
 
-  if(!cart.exists())
-  {
-    console.log(db.inv)
-    await setDoc(doc(firestore, "cart", user.email), db.inv );
-  }
-  else{
+  if (!cart.exists()) {
+    await setDoc(doc(firestore, "cart", user.email), db.inv);
+  } else {
     db.inv = cart.data();
-    console.log(data().inv)
+    console.log(data().inv);
   }
   db.user = user;
-  router.push('/Store');
+  router.push("/Store");
 };
 
 const loginEmail = async () => {
@@ -43,34 +40,31 @@ const loginEmail = async () => {
       passwordFirst.value
     );
     db.user = user;
-    let cart = (await getDoc(doc(firestore, "cart", user.email)));
+    let cart = await getDoc(doc(firestore, "cart", user.email));
     db.inv = cart.data();
-    console.log("it works")
-    router.push("/Store")
+    router.push("/Store");
   } catch (error) {
     passWrong.value = true;
     console.log(error);
   }
-}
-
+};
 </script>
 
 <template>
-    <logo />
-    <div class="System">
-      <form @submit.prevent="loginEmail()">
-        <input type="email" required placeholder="email" v-model="email" />
-        <input type="password" required placeholder="password" v-model="passwordFirst" />
-        <input type="submit" value="Login" />
-      </form>
-      <p v-if="passWrong">Incorrect Login Info</p>
-      <button @click="LoginGoogle()">Login via Google</button>
-      <button @click="$router.push('/Register')">Register</button>
-    </div>
+  <logo />
+  <div class="System">
+    <form @submit.prevent="loginEmail()">
+      <input type="email" required placeholder="email" v-model="email" />
+      <input type="password" required placeholder="password" v-model="passwordFirst" />
+      <input type="submit" value="Login" />
+    </form>
+    <p v-if="passWrong">Incorrect Login Info</p>
+    <button @click="LoginGoogle()">Login via Google</button>
+    <button @click="$router.push('/Register')">Register</button>
+  </div>
 </template>
 
 <style scoped>
-
 .System {
   display: flex;
   flex-direction: column;
@@ -94,11 +88,11 @@ input[type="submit"] {
   font-family: cursive;
 }
 
-form{
+form {
   margin-bottom: 5px;
 }
 
-button{
+button {
   margin-top: 5px;
   width: 550px;
   height: 50px;

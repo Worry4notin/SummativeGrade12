@@ -1,12 +1,14 @@
 <script setup>
-    import { dataTemp, data } from "../store/index";
+import { dataTemp, data } from "../store/index";
 </script>
 
 <template>
   <teleport to="body">
     <div class="modal">
       <div class="content">
-        <img :src="`https://image.tmdb.org/t/p/w500/${dataTemp().viewTemp.poster_path}`" />
+        <img
+          :src="`https://image.tmdb.org/t/p/w500/${dataTemp().viewTemp.poster_path}`"
+        />
         <div>
           <h1>Title</h1>
           <p>{{ dataTemp().viewTemp.title }}</p>
@@ -21,7 +23,6 @@
     </div>
   </teleport>
 </template>
-
 
 <style scoped>
 img {

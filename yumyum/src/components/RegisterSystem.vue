@@ -24,26 +24,29 @@ const registerEmail = async () => {
     passwordFirst.value
   );
   db.user = user;
-  await setDoc(doc(firestore, "cart", user.email), db.inv );
+  await setDoc(doc(firestore, "cart", user.email), db.inv);
 };
-
 </script>
 
 <template>
-    <logo />
-    <div class="register">
-      <form @submit.prevent="registerEmail()">
-        <input type="email" required placeholder="email" v-model="email" />
-        <input type="password" required placeholder="password" v-model="passwordFirst" />
-        <input type="password" required placeholder="retype password" v-model="passwordSecond" />
-        <input type="submit" value="Sign up" />
-        <button @click="$router.push('/Login')">Back to Login</button>
-      </form>
-    </div>
+  <logo />
+  <div class="register">
+    <form @submit.prevent="registerEmail()">
+      <input type="email" required placeholder="email" v-model="email" />
+      <input type="password" required placeholder="password" v-model="passwordFirst" />
+      <input
+        type="password"
+        required
+        placeholder="retype password"
+        v-model="passwordSecond"
+      />
+      <input type="submit" value="Sign up" />
+      <button @click="$router.push('/Login')">Back to Login</button>
+    </form>
+  </div>
 </template>
 
 <style scoped>
-
 .register {
   display: flex;
   flex-direction: column;
@@ -67,7 +70,7 @@ input[type="submit"] {
   font-family: cursive;
 }
 
-button{
+button {
   margin-top: 20px;
   width: 550px;
   height: 50px;
@@ -75,5 +78,4 @@ button{
   border-radius: 4px;
   font-family: cursive;
 }
-
 </style>

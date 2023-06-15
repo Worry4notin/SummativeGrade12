@@ -30,16 +30,16 @@ const getTMDBData = async (url, options) => {
 };
 
 const viewProduct = (data) => {
-    dataTemp().viewTemp = data;
-    dataTemp().isOpen = true;
-}
+  dataTemp().viewTemp = data;
+  dataTemp().isOpen = true;
+};
 
-if(!auth.currentUser){
-  router.push('/Login')
+if (!auth.currentUser) {
+  router.push("/Login");
 }
 </script>
 
- <template>
+<template>
   <div>
     <div class="interface">
       <div class="select">
@@ -64,34 +64,91 @@ if(!auth.currentUser){
           <option value="18">Drama</option>
           <option value="10749">Romance</option>
         </select>
-        <button @click="getTMDBData('https://api.themoviedb.org/3/discover/movie', { with_genres: genre,})">Get</button>
+        <button
+          @click="
+            getTMDBData('https://api.themoviedb.org/3/discover/movie', {
+              with_genres: genre,
+            })
+          "
+        >
+          Get
+        </button>
       </div>
       <div class="search">
         <input type="search" placeholder="Search bar" v-model="search" />
-        <button @click=" currentPage = 1 ; getTMDBData('https://api.themoviedb.org/3/search/movie', { query: search, }) ">Search</button>
+        <button
+          @click="
+            currentPage = 1;
+            getTMDBData('https://api.themoviedb.org/3/search/movie', { query: search });
+          "
+        >
+          Search
+        </button>
       </div>
     </div>
     <div class="pagination">
-      <button @click=" getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
+      <button
+        @click="
+          getTMDBData(
+            currentURL,
+            { with_genres: genre, query: search },
+            currentPage == 1 ? 1 : currentPage--
+          )
+        "
+      >
+        Prev
+      </button>
       <p>{{ `Page ${currentPage} of ${pageTotal}` }}</p>
-      <button @click="getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
+      <button
+        @click="
+          getTMDBData(
+            currentURL,
+            { with_genres: genre, query: search },
+            currentPage <= pageTotal ? currentPage++ : pageTotal
+          )
+        "
+      >
+        Next
+      </button>
     </div>
     <div v-if="movies" class="products">
       <div v-for="movie in movies.results">
-        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" @click="viewProduct(movie)"/>
+        <img
+          :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+          @click="viewProduct(movie)"
+        />
       </div>
     </div>
     <div class="pagination" v-if="movies">
-      <button @click=" getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage == 1 ? 1 : currentPage--)">Prev</button>
+      <button
+        @click="
+          getTMDBData(
+            currentURL,
+            { with_genres: genre, query: search },
+            currentPage == 1 ? 1 : currentPage--
+          )
+        "
+      >
+        Prev
+      </button>
       <p>{{ `Page ${currentPage} of ${pageTotal}` }}</p>
-      <button @click="getTMDBData(currentURL,{with_genres: genre, query: search,},currentPage <= pageTotal ? currentPage++ : pageTotal )">Next</button>
+      <button
+        @click="
+          getTMDBData(
+            currentURL,
+            { with_genres: genre, query: search },
+            currentPage <= pageTotal ? currentPage++ : pageTotal
+          )
+        "
+      >
+        Next
+      </button>
     </div>
   </div>
   <Modal v-if="dataTemp().isOpen" />
 </template>
 
 <style scoped>
-
 .products {
   display: grid;
   grid-template-columns: repeat(5, auto);
@@ -124,7 +181,7 @@ button {
   padding: 4.5px 15px;
 }
 
-select{
+select {
   display: block;
   height: 45px;
   font-size: 25px;
@@ -133,30 +190,30 @@ select{
   border-radius: 4px;
 }
 
-.interface{
+.interface {
   margin-top: 12px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.select{
+.select {
   display: flex;
   flex-direction: row;
 }
 
-.search{
+.search {
   display: flex;
   flex-direction: row;
 }
-.pagination{
+.pagination {
   display: flex;
   flex-direction: row;
   gap: 12px;
   justify-content: center;
 }
 
-.pagination button{
+.pagination button {
   font-size: 17px;
   font-family: cursive;
   border-radius: 6px;
@@ -165,7 +222,7 @@ select{
   margin-bottom: auto;
 }
 
-.pagination > p{
+.pagination > p {
   font-size: 18px;
   font-family: cursive;
   color: white;
@@ -178,5 +235,4 @@ select{
   gap: 15px;
   padding: 15px;
 }
-
 </style>

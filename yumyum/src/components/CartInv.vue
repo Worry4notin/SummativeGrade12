@@ -18,8 +18,8 @@ function closeOrder(data) {
   db.removeCart(data);
 }
 
-if(!auth.currentUser){
-  router.push('/Login')
+if (!auth.currentUser) {
+  router.push("/Login");
 }
 </script>
 
@@ -31,7 +31,10 @@ if(!auth.currentUser){
     <div class="content">
       <div v-for="data in data().inv" class="product">
         <div>
-          <img :src="`https://image.tmdb.org/t/p/w500/${data.poster_path}`" class="poster" />
+          <img
+            :src="`https://image.tmdb.org/t/p/w500/${data.poster_path}`"
+            class="poster"
+          />
           <div class="button">
             <button @click="db.removeCart(data)">Cancel</button>
             <button @click="order(data)">Order</button>
