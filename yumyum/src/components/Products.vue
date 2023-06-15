@@ -2,6 +2,7 @@
 import { auth } from "../firebase";
 import axios from "axios";
 import { ref } from "vue";
+import router from "../router/index";
 import { dataTemp } from "../store/index";
 import Modal from "../components/Modal.vue";
 

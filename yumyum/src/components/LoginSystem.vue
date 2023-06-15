@@ -100,4 +100,8 @@ button {
   border-radius: 4px;
   font-family: cursive;
 }
+
+p {
+  color: red;
+}
 </style>
