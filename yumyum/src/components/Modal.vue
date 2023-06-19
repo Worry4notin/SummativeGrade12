@@ -7,7 +7,9 @@ import { dataTemp, data } from "../store/index";
     <div class="modal">
       <div class="content">
         <img
-          :src="`https://image.tmdb.org/t/p/w500/${dataTemp().viewTemp.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w500/${
+            dataTemp().viewTemp.poster_path
+          }`"
         />
         <div>
           <h1>Title</h1>
@@ -16,7 +18,9 @@ import { dataTemp, data } from "../store/index";
           <p>{{ dataTemp().viewTemp.release_date }}</p>
           <div class="button">
             <button @click="dataTemp().isOpen = false">Close</button>
-            <button @click="data().addCart(dataTemp().viewTemp)">Purchase</button>
+            <button @click="data().addCart(dataTemp().viewTemp)">
+              Purchase
+            </button>
           </div>
         </div>
       </div>

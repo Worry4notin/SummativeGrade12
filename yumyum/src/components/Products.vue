@@ -80,7 +80,9 @@ if (!auth.currentUser) {
         <button
           @click="
             currentPage = 1;
-            getTMDBData('https://api.themoviedb.org/3/search/movie', { query: search });
+            getTMDBData('https://api.themoviedb.org/3/search/movie', {
+              query: search,
+            });
           "
         >
           Search

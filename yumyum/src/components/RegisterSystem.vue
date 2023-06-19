@@ -33,7 +33,12 @@ const registerEmail = async () => {
   <div class="register">
     <form @submit.prevent="registerEmail()">
       <input type="email" required placeholder="email" v-model="email" />
-      <input type="password" required placeholder="password" v-model="passwordFirst" />
+      <input
+        type="password"
+        required
+        placeholder="password"
+        v-model="passwordFirst"
+      />
       <input
         type="password"
         required

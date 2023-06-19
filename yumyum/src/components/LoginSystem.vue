@@ -55,7 +55,12 @@ const loginEmail = async () => {
   <div class="System">
     <form @submit.prevent="loginEmail()">
       <input type="email" required placeholder="email" v-model="email" />
-      <input type="password" required placeholder="password" v-model="passwordFirst" />
+      <input
+        type="password"
+        required
+        placeholder="password"
+        v-model="passwordFirst"
+      />
       <input type="submit" value="Login" />
     </form>
     <p v-if="passWrong">Incorrect Login Info</p>
